@@ -1,0 +1,25 @@
+1- To generate an image from alpine 3.10 from Dockerfile
+    docker build -t "my_image_name" .         -----> The point is necesary in order to indicate that i want include all files from my project
+
+2- Crear directorio de trbaajo dentro del contenedor a donde voy a copiar todos los archivos de mi proyecto
+    WORKDIR /app
+
+3- COPY . /app      -----------> con esto indico que copie todos los archivos al directorio que acabo de crear dentro del contenedor
+
+4- Para instalar los módulos que necesitamos
+    
+    RUN pip3 --no-cache-dir install requirements.txt (Desde dentro del contenedor va a instalar todos los módulos que están listados en el requirements.txt)
+
+    --no-cache-dir ----------> para que no utilice la memoria cache
+
+5- Para ejecutar la aplicación una vez terminada la instalación
+
+    CMD ["python3", "src/app.py"]
+
+Resumen:
+1- Instalar el S.O(en este caso Alpine)
+2- Instalar python y pip
+3- Crear una carpeta
+4- Copiar los archivos de la aplicación dentro de la carpeta
+5- Instalar las dependencias
+6- Finalmente ejecutar la aplicación, para ello primero es necesario generar la imagen con el comando docker build...

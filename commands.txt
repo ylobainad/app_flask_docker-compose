@@ -23,3 +23,12 @@ Resumen:
 4- Copiar los archivos de la aplicación dentro de la carpeta
 5- Instalar las dependencias
 6- Finalmente ejecutar la aplicación, para ello primero es necesario generar la imagen con el comando docker build...
+
+Para lanzar un contenedor a partir d ela imagen:
+    docker run -it -p ext_port:int_port -d "image_name"
+
+    it --> modo interactivo
+    -p(publish) --> para indicar los puertos de host y guest
+    -d(detach) --> para que el contenedor se ejecute en background y liberar la consola
+
+Ex: docker run -it -p 7000:4000 -d flaskapp
